@@ -12,37 +12,39 @@ export const Hero = () => {
   const [showContactModal, setShowContactModal] = useState(false);
 
   return (
-    <section className="min-h-[80vh] flex items-center justify-center relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-background to-background" />
-      
+    <section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-purple-900 via-orange-500 to-green-500">
       {/* Navigation */}
       <div className="absolute top-0 left-0 right-0 p-6">
         <nav className="container mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <img src="/placeholder.svg" alt="Logo" className="w-8 h-8" />
-            <span className="text-xl font-bold gradient-text">MVP Magic</span>
+            <span className="text-xl font-bold text-white">MVP Magic</span>
           </div>
-          <Button 
-            variant="secondary" 
-            className="hover:bg-secondary/80"
-            onClick={() => setShowContactModal(true)}
-          >
-            Contact Us
-          </Button>
+          <div className="flex gap-4">
+            <Button 
+              variant="ghost" 
+              className="text-white hover:text-white hover:bg-white/20"
+              onClick={() => setShowContactModal(true)}
+            >
+              Contact Us
+            </Button>
+            <Button variant="outline" className="bg-white text-black hover:bg-white/90">
+              Download
+            </Button>
+          </div>
         </nav>
       </div>
 
-      <div className="container relative z-10 px-4 py-32 mx-auto text-center">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">
-          Have an Idea?{" "}
-          <span className="gradient-text">We'll Build Your MVP</span>
+      <div className="container relative z-10 px-4 py-32 mx-auto text-center flex flex-col items-center justify-center min-h-screen">
+        <h1 className="text-6xl md:text-8xl font-bold mb-6 text-white max-w-4xl">
+          Have an Idea? We'll Build Your MVP
         </h1>
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+        <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto mb-12">
           Transform your vision into reality with our AI-powered MVP development
           service. Fast, efficient, and tailored to your needs.
         </p>
-        <Button size="lg" className="animate-float">
-          Get Started <ArrowRight className="ml-2 h-4 w-4" />
+        <Button size="lg" className="bg-white text-black hover:bg-white/90 text-lg px-8 py-6">
+          Get Started <ArrowRight className="ml-2 h-5 w-5" />
         </Button>
       </div>
 
