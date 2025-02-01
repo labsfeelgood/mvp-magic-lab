@@ -12,6 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
@@ -55,12 +56,82 @@ const projects = [
       "Risk assessment tools"
     ]
   },
+  {
+    title: "E-commerce Platform",
+    description: "Online marketplace MVP completed in 5 weeks",
+    industry: "Retail",
+    image: "/placeholder.svg",
+    fullDescription: "A scalable e-commerce platform with advanced product management and order fulfillment capabilities.",
+    features: [
+      "Product catalog management",
+      "Secure payment processing",
+      "Order tracking system",
+      "Inventory management"
+    ]
+  },
+  {
+    title: "IoT Dashboard",
+    description: "Smart home control system MVP built in 7 weeks",
+    industry: "IoT",
+    image: "/placeholder.svg",
+    fullDescription: "A comprehensive IoT dashboard for monitoring and controlling smart home devices with real-time data visualization.",
+    features: [
+      "Device management",
+      "Real-time monitoring",
+      "Automated routines",
+      "Energy optimization"
+    ]
+  },
+  {
+    title: "HR Management System",
+    description: "Employee management platform MVP delivered in 6 weeks",
+    industry: "Human Resources",
+    image: "/placeholder.svg",
+    fullDescription: "A modern HR management system streamlining employee onboarding, performance tracking, and payroll processing.",
+    features: [
+      "Employee onboarding",
+      "Performance tracking",
+      "Leave management",
+      "Payroll processing"
+    ]
+  },
+  {
+    title: "Social Network",
+    description: "Community platform MVP launched in 8 weeks",
+    industry: "Social Media",
+    image: "/placeholder.svg",
+    fullDescription: "A niche social networking platform focused on connecting professionals in specific industries.",
+    features: [
+      "Profile management",
+      "Content sharing",
+      "Real-time messaging",
+      "Event organization"
+    ]
+  },
+  {
+    title: "Logistics Platform",
+    description: "Supply chain management MVP built in 7 weeks",
+    industry: "Logistics",
+    image: "/placeholder.svg",
+    fullDescription: "An end-to-end logistics platform for tracking shipments and managing supply chain operations.",
+    features: [
+      "Route optimization",
+      "Shipment tracking",
+      "Inventory management",
+      "Delivery scheduling"
+    ]
+  }
 ];
 
 export const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(
     null
   );
+  const [visibleProjects, setVisibleProjects] = useState(6);
+
+  const showMoreProjects = () => {
+    setVisibleProjects(prev => Math.min(prev + 6, projects.length));
+  };
 
   return (
     <section className="py-24 bg-secondary/50">
@@ -69,7 +140,7 @@ export const Portfolio = () => {
           Real Founders, Real MVPs
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {projects.map((project) => (
+          {projects.slice(0, visibleProjects).map((project) => (
             <Card 
               key={project.title} 
               className="bg-secondary/50 backdrop-blur-sm cursor-pointer transition-transform hover:scale-105"
@@ -92,6 +163,18 @@ export const Portfolio = () => {
             </Card>
           ))}
         </div>
+        
+        {visibleProjects < projects.length && (
+          <div className="mt-12 text-center">
+            <Button 
+              variant="secondary" 
+              onClick={showMoreProjects}
+              className="hover:bg-secondary/80"
+            >
+              Load More
+            </Button>
+          </div>
+        )}
       </div>
 
       <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>

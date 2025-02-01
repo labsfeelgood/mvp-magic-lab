@@ -1,7 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { useState } from "react";
 
 export const Hero = () => {
+  const [showContactModal, setShowContactModal] = useState(false);
+
   return (
     <section className="min-h-[80vh] flex items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-background to-background" />
@@ -13,7 +22,11 @@ export const Hero = () => {
             <img src="/placeholder.svg" alt="Logo" className="w-8 h-8" />
             <span className="text-xl font-bold gradient-text">MVP Magic</span>
           </div>
-          <Button variant="secondary" className="hover:bg-secondary/80">
+          <Button 
+            variant="secondary" 
+            className="hover:bg-secondary/80"
+            onClick={() => setShowContactModal(true)}
+          >
             Contact Us
           </Button>
         </nav>
@@ -32,6 +45,22 @@ export const Hero = () => {
           Get Started <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </div>
+
+      <Dialog open={showContactModal} onOpenChange={setShowContactModal}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>How would you like to connect?</DialogTitle>
+          </DialogHeader>
+          <div className="flex flex-col gap-4 mt-4">
+            <Button variant="default" size="lg">
+              Schedule a Call
+            </Button>
+            <Button variant="secondary" size="lg">
+              Submit a Query
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
