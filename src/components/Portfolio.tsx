@@ -96,7 +96,7 @@ export const Portfolio = () => {
 
       <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
         {selectedProject && (
-          <DialogContent className="sm:max-w-[625px]">
+          <DialogContent className="sm:max-w-[625px] max-h-[80vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>{selectedProject.title}</DialogTitle>
               <DialogDescription>

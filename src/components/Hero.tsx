@@ -5,6 +5,20 @@ export const Hero = () => {
   return (
     <section className="min-h-[80vh] flex items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-background to-background" />
+      
+      {/* Navigation */}
+      <div className="absolute top-0 left-0 right-0 p-6">
+        <nav className="container mx-auto flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            <img src="/placeholder.svg" alt="Logo" className="w-8 h-8" />
+            <span className="text-xl font-bold gradient-text">MVP Magic</span>
+          </div>
+          <Button variant="secondary" className="hover:bg-secondary/80">
+            Contact Us
+          </Button>
+        </nav>
+      </div>
+
       <div className="container relative z-10 px-4 py-32 mx-auto text-center">
         <h1 className="text-4xl md:text-6xl font-bold mb-6">
           Have an Idea?{" "}
